@@ -12,17 +12,17 @@ You can deploy it using docker or use your own approach building it yourself as 
 ## Build
 ### Docker
 > see [Dockerfile](./Dockerfile)
-```[test.yaml](test.yaml)
+```
 volumes:
   ptg-data:
     driver: local
 
 services:
   pi_thermo_guard:
-    image: 0foxy0/pi-thermo-guard
+    image: 0foxy0/pi-thermo-guard:latest
     env_file:
       - .env
-    container_name: PiThermoGuard
+    container_name: pi_thermo_guard
     ports:
       - "4440:4440" # has to match the "PORT" of .env
     volumes:
@@ -30,7 +30,7 @@ services:
 ```
 
 ### build command for local installation
-env GOOS=linux GOARCH=arm go build -o PiThermoGuard
+`env GOOS=linux GOARCH=arm go build -o PiThermoGuard`
 
 ## Environment Variables
 > see [.env.example](./.env.example)
